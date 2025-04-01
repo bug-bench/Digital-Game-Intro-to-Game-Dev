@@ -24,6 +24,16 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping; // Checks if the player is currently jumping
     private float jumpTimeCounter; // Tracks how long the jump button has been held
 
+    [Header("Dash Settings")]
+    public float dashSpeed = 20f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1f;
+    private bool isDashing = false;
+    private bool canDash = true;
+    private float dashTime;
+    private float dashEndTime;
+    private float dashCooldownEndTime;
+
     void Start() {
         rb = GetComponent<Rigidbody2D>(); 
     }
@@ -31,11 +41,15 @@ public class PlayerMovement : MonoBehaviour
     void Update() {
         HandleInput(); 
         HandleCoyoteTime(); 
-        HandleJumpBuffer(); 
+        HandleJumpBuffer();
+        HandleDash();
     }
 
     void FixedUpdate() {
-        ApplyMovement(); 
+       if (!isDashing)
+        {
+            ApplyMovement();
+        }
     }
 
     void HandleInput() {
@@ -69,6 +83,19 @@ public class PlayerMovement : MonoBehaviour
         // Decrease jump buffer timer over time
         if (jumpBufferCounter > 0)
             jumpBufferCounter -= Time.deltaTime;
+    }
+
+    void HandleDash()
+    {
+        if (Input.GetKeyDown(KeyCode.C) && canDash)
+        {
+            Dash();
+        }
+
+        if (isDashing && Time.time >= dashEndTime)
+        {
+            StopDash();
+        }
     }
 
     void ApplyMovement() {
@@ -105,6 +132,26 @@ public class PlayerMovement : MonoBehaviour
         else {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
+    }
+
+    void Dash()
+    {
+        isDashing = true;
+        canDash = false;
+        dashEndTime = Time.time + dashDuration;
+        dashCooldownEndTime = Time.time + dashDuration + dashCooldown;
+        rb.linearVelocity = new Vector2((inputX == 0 ? transform.localScale.x : inputX) * dashSpeed, 0);
+    }
+
+    void StopDash()
+    {
+        isDashing = false;
+        Invoke("ResetDash", dashCooldown);
+    }
+
+    void ResetDash()
+    {
+        canDash = true;
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
