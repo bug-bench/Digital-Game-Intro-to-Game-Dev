@@ -15,6 +15,7 @@ public class Echo : MonoBehaviour
     {
         echoTransform = transform.Find("EchoRange");
         alreadyPingedColliderList = new List<Collider2D>();
+        echoRenderer = echoTransform.GetComponent<SpriteRenderer>();
         echoRenderer.enabled = false;
 
     }
