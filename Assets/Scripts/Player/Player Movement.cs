@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private bool canDash = true;
     private float dashEndTime;
-    private bool isFacingRight = true; 
+    public bool isFacingRight = true; 
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
