@@ -22,13 +22,14 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 1f;
 
     [Header("Ground Check Settings")]
-    public Transform groundCheck; 
+    public Transform groundCheck;
+    public Transform spriteTransform;
     public float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
     private bool isGrounded;
 
     [Header("Control Scheme")]
-    public bool keyToggle = false; // Toggle between arrow/X/C and WASD/Space/J
+    public bool keyToggle = false;
 
     private Rigidbody2D rb;
     private float coyoteTimeCounter;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private bool canDash = true;
     private float dashEndTime;
+    private bool isFacingRight = true; 
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -126,7 +128,12 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, targetSpeed, airControlFactor * Time.fixedDeltaTime), rb.linearVelocity.y);
         }
-
+        
+        if (inputX > 0 && !isFacingRight)
+            Flip();
+        else if (inputX < 0 && isFacingRight)
+            Flip();
+        
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
         {
             Jump();
@@ -161,18 +168,15 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
-    // void OnCollisionEnter2D(Collision2D collision) {
-    //     if (collision.gameObject.CompareTag("Ground"))
-    //         isGrounded = true;
-    // }
-
-    // void OnCollisionExit2D(Collision2D collision) {
-    //     if (collision.gameObject.CompareTag("Ground"))
-    //         isGrounded = false;
-    // }
-
     void CheckGrounded() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+    }
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scale = spriteTransform.localScale;
+        scale.x *= -1;
+        spriteTransform.localScale = scale;
     }
 
     void OnDrawGizmosSelected() {
