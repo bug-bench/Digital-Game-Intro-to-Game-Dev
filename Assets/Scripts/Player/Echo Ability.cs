@@ -4,6 +4,8 @@ using System.Collections;
 public class EchoAbility : MonoBehaviour
 {
     [Header("Echo Ability Settings")]
+    [Header("Control Settings")]
+    public bool keyToggle = false; // Toggle between Z and K
     public float echoRange = 5f;
     public LayerMask echoLayerMask;
     public GameObject echoVisualPrefab;
@@ -11,7 +13,7 @@ public class EchoAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if ((keyToggle && Input.GetKeyDown(KeyCode.K)) || (!keyToggle && Input.GetKeyDown(KeyCode.Z)))
         {
             SendEcho();
         }
