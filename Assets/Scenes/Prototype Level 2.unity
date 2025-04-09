@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 37114034}
   - component: {fileID: 37114033}
   - component: {fileID: 37114032}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Pogo Platform (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1125,7 +1125,7 @@ GameObject:
   - component: {fileID: 728859397}
   - component: {fileID: 728859396}
   - component: {fileID: 728859395}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Pogo Platform (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2225,7 +2225,7 @@ GameObject:
   - component: {fileID: 1446580497}
   - component: {fileID: 1446580496}
   - component: {fileID: 1446580495}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: 'Pogo Platform '
   m_TagString: Ground
   m_Icon: {fileID: 0}

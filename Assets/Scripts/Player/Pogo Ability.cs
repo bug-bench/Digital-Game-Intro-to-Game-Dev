@@ -16,7 +16,7 @@ public class PogoAbility : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerTransform = transform;
 
-        pogoLayer = LayerMask.GetMask("PogoLayer");
+        pogoLayer = LayerMask.GetMask("Pogo Layer");
     }
 
     void Update()
