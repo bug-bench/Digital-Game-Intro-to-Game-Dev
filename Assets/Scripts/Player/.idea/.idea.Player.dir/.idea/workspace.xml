@@ -14,6 +14,7 @@
     <setting file="file://$PROJECT_DIR$/../CameraFollow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player Movement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Pogo Ability.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ReflectionShield.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2vTa2mFtvePXF8CmCj9h9r0hw8G" />
@@ -52,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1724645819377</updated>
-      <workItem from="1744171316101" duration="2598000" />
+      <workItem from="1744171316101" duration="4931000" />
     </task>
     <servers />
   </component>

@@ -5,11 +5,13 @@ public class ReflectionShield : MonoBehaviour
     public GameObject shieldVisual;
     public float duration = 3f;
     private bool isActive = false;
+    
+    [Header("Control Settings")]
+    public bool keyToggle = false; // Toggle between Z and K
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && !isActive)
-        {
+        if ((keyToggle && Input.GetKeyDown(KeyCode.K)) || (!keyToggle && Input.GetKeyDown(KeyCode.Z)))        {
             ActivateShield();
         }
     }

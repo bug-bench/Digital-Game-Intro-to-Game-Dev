@@ -10,6 +10,8 @@ public class PogoAbility : MonoBehaviour
     private bool canPogo = false;
     private Transform playerTransform;
     private LayerMask pogoLayer;
+    public bool keyToggle = false; // Toggle between Z and K
+
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class PogoAbility : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && canPogo)
+        if ((keyToggle && Input.GetKeyDown(KeyCode.K)) || (!keyToggle && Input.GetKeyDown(KeyCode.Z) )&& canPogo)
         {
             DoPogoBounce();
         }
