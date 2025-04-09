@@ -5,17 +5,19 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Projectile
+  - Spike
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Echo layer
-  - 
-  - 
-  - 
+  - Player
+  - Spike
+  - Pogo Layer
   - 
   - 
   - 

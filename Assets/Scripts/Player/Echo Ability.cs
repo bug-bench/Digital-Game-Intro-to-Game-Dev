@@ -4,14 +4,23 @@ using System.Collections;
 public class EchoAbility : MonoBehaviour
 {
     [Header("Echo Ability Settings")]
+    [Header("Control Settings")]
+    public bool keyToggle = false; // Toggle between Z and K
     public float echoRange = 5f;
     public LayerMask echoLayerMask;
     public GameObject echoVisualPrefab;
+    private PlayerMovement playerMovement;
+    
+    // on start
+    void Start()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if ((keyToggle && Input.GetKeyDown(KeyCode.K)) || (!keyToggle && Input.GetKeyDown(KeyCode.Z)))
         {
             SendEcho();
         }
@@ -20,22 +29,18 @@ public class EchoAbility : MonoBehaviour
     // Sends the Echo Ability as a raycast and visualises it
     void SendEcho()
     {
-        // Perform the raycast in the right direction with specified range and layer mask
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, echoRange, echoLayerMask);
-        
-        // Visualise the raycast in the scene view
-        Debug.DrawRay(transform.position, Vector2.right * echoRange, Color.cyan, 0.5f);
+        Vector2 direction = playerMovement != null && playerMovement.isFacingRight ? Vector2.right : Vector2.left;
 
-        // If the raycast hits an object, process the hit object
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, echoRange, echoLayerMask);
+        Debug.DrawRay(transform.position, direction * echoRange, Color.cyan, 0.5f);
+
         if (hit.collider != null)
         {
-            Debug.Log("Raycast hit: " + hit.collider.gameObject.name); // Log the name of the hit object
+            Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
 
-            // Try to get the EchoPlatform component from the hit object
             EchoPlatform echoPlatform = hit.collider.GetComponent<EchoPlatform>();
             if (echoPlatform != null)
             {
-                // If the hit object is an EchoPlatform, reveal it
                 echoPlatform.RevealPlatform();
             }
         }
@@ -44,17 +49,24 @@ public class EchoAbility : MonoBehaviour
             Debug.Log("Raycast did not hit anything.");
         }
 
-        // Determine the endpoint of the raycast
-        Vector3 endPosition = hit.collider != null ? hit.point : transform.position + Vector3.right * echoRange;
+        Vector3 endPosition = hit.collider != null ? hit.point : (Vector3)(direction * echoRange) + transform.position;
         float distance = Vector3.Distance(transform.position, endPosition);
 
-        // Instantiate a prefav represent the raycast in the scene
         if (echoVisualPrefab != null)
         {
             GameObject echoEffect = Instantiate(echoVisualPrefab, transform.position, Quaternion.identity);
-            echoEffect.transform.localScale = new Vector3(distance, 0.1f, 1f); // Scale it to match the ray's length
-            echoEffect.transform.position = (transform.position + endPosition) / 2; // Position it at the midpoint
-            Destroy(echoEffect, 0.5f); // Destroy the visual effect after 0.5 seconds
+            echoEffect.transform.localScale = new Vector3(distance, 0.1f, 1f);
+            echoEffect.transform.position = (transform.position + endPosition) / 2;
+
+            // Flip the effect if facing left
+            if (direction == Vector2.left)
+            {
+                Vector3 scale = echoEffect.transform.localScale;
+                scale.x *= -1;
+                echoEffect.transform.localScale = scale;
+            }
+
+            Destroy(echoEffect, 0.5f);
         }
     }
 }
