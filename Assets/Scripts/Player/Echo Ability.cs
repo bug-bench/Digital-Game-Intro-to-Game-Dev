@@ -55,8 +55,8 @@ public class EchoAbility : MonoBehaviour
         if (echoVisualPrefab != null)
         {
             GameObject echoEffect = Instantiate(echoVisualPrefab, transform.position, Quaternion.identity);
-            echoEffect.transform.localScale = new Vector3(distance, 0.1f, 1f);
-            echoEffect.transform.position = (transform.position + endPosition) / 2;
+            echoEffect.transform.localScale = new Vector3(distance, 1f, 1f);
+            echoEffect.transform.position = (transform.position + endPosition);
 
             // Flip the effect if facing left
             if (direction == Vector2.left)
