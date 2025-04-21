@@ -185,4 +185,25 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Spike"))
+        {
+            ReflectionShield shield = GetComponent<ReflectionShield>();
+            if (shield == null || !shield.IsShieldActive())
+            {
+                // 没开盾 → 玩家被弹飞
+                Vector2 bounceDirection = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(bounceDirection * 1000f);
+                Debug.Log("Hit spike! Knocked back!");
+            }
+            else
+            {
+                Debug.Log("Shield active → passed through spike safely.");
+                // 什么都不做，玩家可以穿过
+            }
+        }
+    }
 }
+
+
