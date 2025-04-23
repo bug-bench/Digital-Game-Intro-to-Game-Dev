@@ -1215,6 +1215,10 @@ PrefabInstance:
       propertyPath: echoLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 8613597753662078348, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: m_Name
+      value: Player Face Indicator
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
