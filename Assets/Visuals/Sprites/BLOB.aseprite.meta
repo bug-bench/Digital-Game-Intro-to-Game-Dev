@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d0a78890326b421eb25451080dd395f
+guid: 7fcb7f7d7b94a4342a9dcf208db22c03
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BLOB
+  - name: Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -133,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 8
-      height: 8
-    spriteID: 29d2b15e8bfa3410fa90cf49fba35d45
+      width: 16
+      height: 15
+    spriteID: edacbcdef74224c6baef4fbb343f56fa
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,24 +144,54 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 27
+      width: 16
+      height: 15
+    spriteID: 7fee021cf950a422485a72f2e51baf78
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 27}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1778014177
-    name: BLOB
+    guid: 601451114
+    name: BLOB 1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BLOB
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 8
-        height: 8
-      spriteId: 29d2b15e8bfa3410fa90cf49fba35d45
+        width: 16
+        height: 15
+      spriteId: edacbcdef74224c6baef4fbb343f56fa
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 16
+        height: 15
+      spriteId: 7fee021cf950a422485a72f2e51baf78
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -180,5 +210,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 8, y: 8}
-  previousTextureSize: {x: 16, y: 16}
+  canvasSize: {x: 16, y: 16}
+  previousTextureSize: {x: 32, y: 64}
