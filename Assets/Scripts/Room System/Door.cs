@@ -10,10 +10,6 @@ public class Door : MonoBehaviour
     private ScreenFader fader;
     public RoomBounds room; 
 
-    private void Start()
-    {
-        fader = FindObjectOfType<ScreenFader>();
-    }
 
     void Update()
     {
