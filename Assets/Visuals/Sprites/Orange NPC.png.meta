@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 322c866184da5f84c85954a748bbab23
+guid: 9117f418e059c014495386047200e049
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -126,15 +126,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Element_Zone_Castle_Tileset_0
+      name: Orange_NPC
       rect:
         serializedVersion: 2
-        x: 0
+        x: 120
         y: 0
-        width: 160
-        height: 128
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Element_Zone_Castle_Tileset_0: 2827428485256970672
+      Orange_NPC: 2827428485256970672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
