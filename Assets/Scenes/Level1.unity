@@ -5135,7 +5135,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1163346126422724043, guid: fe490acf9bd57e94a929d9848229b6bb, type: 3}
       propertyPath: m_text
-      value: Press - to Leave to go to the next level, goodluck
+      value: Press Tab to go back to level select, goodluck
       objectReference: {fileID: 0}
     - target: {fileID: 3170221348311156539, guid: fe490acf9bd57e94a929d9848229b6bb, type: 3}
       propertyPath: m_LocalScale.x

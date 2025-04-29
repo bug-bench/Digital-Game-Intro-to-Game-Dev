@@ -8,7 +8,7 @@ public class ReturnToLevelSelect : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Minus))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             SceneManager.LoadScene(menuSceneName);
         }
