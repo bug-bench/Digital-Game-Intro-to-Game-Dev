@@ -5929,10 +5929,10 @@ MonoBehaviour:
   player: {fileID: 2140670293}
   smoothTime: 0.15
   offset: {x: 2, y: 0}
-  minX: -1000
-  maxX: 1000
-  minY: -1000
-  maxY: 1000
+  minX: -11
+  maxX: 129
+  minY: -5
+  maxY: 10
 --- !u!114 &650373614
 MonoBehaviour:
   m_ObjectHideFlags: 0
