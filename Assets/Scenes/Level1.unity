@@ -3985,6 +3985,21 @@ MonoBehaviour:
   knockbackForceY: 10
   knockbackCooldown: 0.2
   keyToggle: 1
+--- !u!114 &598096194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598096184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905cce6cd8e315e46a48f8ea74daa712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 1
 --- !u!1 &614088378
 GameObject:
   m_ObjectHideFlags: 0
@@ -12147,6 +12162,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1958484851504716387, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 598096193}
+    - targetCorrespondingSourceObject: {fileID: 1958484851504716387, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 598096194}
   m_SourcePrefab: {fileID: 100100000, guid: e0f908f31335be642b01763f716e7dab, type: 3}
 --- !u!4 &1840711439 stripped
 Transform:
