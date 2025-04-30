@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     public float jumpBufferTime = 0.1f;
     public float speedBoostFactor = 1.2f;
 
+    [Header("Dash Settings")]
+    public float dashSpeed = 20f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1f;
+
     [Header("Ground Check Settings")]
     public Transform groundCheck;
     public Transform spriteTransform;
@@ -27,38 +32,35 @@ public class PlayerMovement : MonoBehaviour
     public bool keyToggle = false;
 
     private Rigidbody2D rb;
-    private PlayerDash playerDash; // Reference to the dash script
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
     private float inputX;
     private bool isJumping;
     private float jumpTimeCounter;
-    public bool isFacingRight = true;
+    private bool isDashing = false;
+    private bool canDash = true;
+    private float dashEndTime;
+    public bool isFacingRight = true; 
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
-        playerDash = GetComponent<PlayerDash>();
     }
 
-    void Update()
-    {
+    void Update() {
         HandleInput();
         HandleCoyoteTime();
         HandleJumpBuffer();
+        HandleDash();
         CheckGrounded();
     }
 
-    void FixedUpdate()
-    {
-        if (playerDash == null || !playerDash.IsDashing())
-        {
+    void FixedUpdate() {
+        if (!isDashing) {
             ApplyMovement();
         }
     }
 
-    void HandleInput()
-    {
+    void HandleInput() {
         inputX = 0;
 
         // Movement input
@@ -89,22 +91,32 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void HandleCoyoteTime()
-    {
+    void HandleCoyoteTime() {
         if (isGrounded)
             coyoteTimeCounter = coyoteTime;
         else
             coyoteTimeCounter -= Time.deltaTime;
     }
 
-    void HandleJumpBuffer()
-    {
+    void HandleJumpBuffer() {
         if (jumpBufferCounter > 0)
             jumpBufferCounter -= Time.deltaTime;
     }
 
-    void ApplyMovement()
-    {
+    void HandleDash() {
+        if ((keyToggle && Input.GetKeyDown(KeyCode.J)) || (!keyToggle && Input.GetKeyDown(KeyCode.C)))
+        {
+            if (canDash)
+                Dash();
+        }
+
+        if (isDashing && Time.time >= dashEndTime)
+        {
+            StopDash();
+        }
+    }
+
+    void ApplyMovement() {
         float targetSpeed = inputX * moveSpeed;
         float speedDiff = targetSpeed - rb.linearVelocity.x;
         float accelerationRate = isGrounded ? acceleration : acceleration * airControlFactor;
@@ -116,20 +128,19 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, targetSpeed, airControlFactor * Time.fixedDeltaTime), rb.linearVelocity.y);
         }
-
+        
         if (inputX > 0 && !isFacingRight)
             Flip();
         else if (inputX < 0 && isFacingRight)
             Flip();
-
+        
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
         {
             Jump();
         }
     }
 
-    void Jump()
-    {
+    void Jump() {
         jumpBufferCounter = 0;
         coyoteTimeCounter = 0;
         isJumping = true;
@@ -141,11 +152,25 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
 
-    void CheckGrounded()
-    {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+    void Dash() {
+        isDashing = true;
+        canDash = false;
+        dashEndTime = Time.time + dashDuration;
+        rb.linearVelocity = new Vector2((inputX == 0 ? transform.localScale.x : inputX) * dashSpeed, 0);
     }
 
+    void StopDash() {
+        isDashing = false;
+        Invoke("ResetDash", dashCooldown);
+    }
+
+    void ResetDash() {
+        canDash = true;
+    }
+
+    void CheckGrounded() {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+    }
     void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -154,15 +179,12 @@ public class PlayerMovement : MonoBehaviour
         spriteTransform.localScale = scale;
     }
 
-    void OnDrawGizmosSelected()
-    {
-        if (groundCheck != null)
-        {
+    void OnDrawGizmosSelected() {
+        if (groundCheck != null) {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Spike"))
@@ -170,13 +192,15 @@ public class PlayerMovement : MonoBehaviour
             ReflectionShield shield = GetComponent<ReflectionShield>();
             if (shield == null || !shield.IsShieldActive())
             {
+                // û���� �� ��ұ�����
                 Vector2 bounceDirection = (transform.position - collision.transform.position).normalized;
                 rb.AddForce(bounceDirection * 1000f);
                 Debug.Log("Hit spike! Knocked back!");
             }
             else
             {
-                Debug.Log("Shield active passed through spike safely.");
+                Debug.Log("Shield active �� passed through spike safely.");
+                // ʲô����������ҿ��Դ���
             }
         }
     }
