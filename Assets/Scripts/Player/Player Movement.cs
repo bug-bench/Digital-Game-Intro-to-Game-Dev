@@ -192,18 +192,16 @@ public class PlayerMovement : MonoBehaviour
             ReflectionShield shield = GetComponent<ReflectionShield>();
             if (shield == null || !shield.IsShieldActive())
             {
-                // Ã»¿ª¶Ü ¡ú Íæ¼Ò±»µ¯·É
+                // Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½ï¿½
                 Vector2 bounceDirection = (transform.position - collision.transform.position).normalized;
                 rb.AddForce(bounceDirection * 1000f);
                 Debug.Log("Hit spike! Knocked back!");
             }
             else
             {
-                Debug.Log("Shield active ¡ú passed through spike safely.");
-                // Ê²Ã´¶¼²»×ö£¬Íæ¼Ò¿ÉÒÔ´©¹ý
+                Debug.Log("Shield active ï¿½ï¿½ passed through spike safely.");
+                // Ê²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½Ô´ï¿½ï¿½ï¿½
             }
         }
     }
 }
-
-
