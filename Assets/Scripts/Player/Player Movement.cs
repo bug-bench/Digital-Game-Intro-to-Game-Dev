@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    public Animator playerAnimator;
-
     [Header("Movement Settings")]
     public float moveSpeed = 8f;
     public float acceleration = 10f;
@@ -90,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
                 isJumping = false;
-                playerAnimator.SetBool("Jumping", false);
             }
         }
     }
@@ -125,8 +121,6 @@ public class PlayerMovement : MonoBehaviour
         float speedDiff = targetSpeed - rb.linearVelocity.x;
         float accelerationRate = isGrounded ? acceleration : acceleration * airControlFactor;
         float movement = speedDiff * accelerationRate * Time.fixedDeltaTime;
-        playerAnimator.SetFloat("Speed", Mathf.Abs(movement));
-
 
         rb.linearVelocity = new Vector2(rb.linearVelocity.x + movement, rb.linearVelocity.y);
 
@@ -151,7 +145,6 @@ public class PlayerMovement : MonoBehaviour
         coyoteTimeCounter = 0;
         isJumping = true;
         jumpTimeCounter = maxJumpTime;
-        playerAnimator.SetBool("Jumping", true);
 
         if (Mathf.Abs(rb.linearVelocity.x) > moveSpeed * 0.8f)
             rb.linearVelocity = new Vector2(rb.linearVelocity.x * speedBoostFactor, jumpForce);
