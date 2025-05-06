@@ -1,27 +1,59 @@
+using TMPro;
 using UnityEngine;
 
 public class TutorialNPC : MonoBehaviour
 {
     [Header("Dialogue Settings")]
-    [TextArea(2, 4)]
-    public string dialogueLine;
+    public string[] dialogueLines;                  // Dialogue lines specific to this NPC
+    public TextMeshPro dialogueText;                // Reference to TMP text object
+    public float fadeSpeed = 2f;                    // Speed of fade in/out
 
-    private bool playerInRange = false;
-    private DialogueManager dialogueManager;
+    private int currentLine = 0;
+    private bool playerNear = false;
+    private bool textVisible = false;
+    private bool isTyping = false;
+
+    private Color originalColor;
 
     void Start()
     {
-        dialogueManager = FindObjectOfType<DialogueManager>();
-        if (dialogueManager == null)
-            Debug.LogWarning("DialogueManager not found in scene!");
+        originalColor = dialogueText.color;
+        originalColor.a = 0f;
+        dialogueText.color = originalColor;
+        dialogueText.text = ""; // Start with blank text
     }
 
     void Update()
     {
-        if (playerInRange && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
+        HandleFade();
+        HandleInput();
+    }
+
+    void HandleFade()
+    {
+        Color currentColor = dialogueText.color;
+        float targetAlpha = playerNear ? 1f : 0f;
+        currentColor.a = Mathf.MoveTowards(currentColor.a, targetAlpha, fadeSpeed * Time.deltaTime);
+        dialogueText.color = currentColor;
+    }
+
+    void HandleInput()
+    {
+        if (!playerNear) return;
+
+        if (Input.GetKeyDown(KeyCode.W) && !isTyping)
         {
-            if (dialogueManager != null)
-                dialogueManager.ShowDialogue(dialogueLine);
+            if (currentLine < dialogueLines.Length)
+            {
+                dialogueText.text = dialogueLines[currentLine];
+                currentLine++;
+            }
+            else
+            {
+                // End of dialogue
+                dialogueText.text = "";
+                currentLine = 0;
+            }
         }
     }
 
@@ -29,10 +61,10 @@ public class TutorialNPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = true;
-
-            if (dialogueManager != null)
-                dialogueManager.ShowDialogue(dialogueLine); // Speak immediately on entering
+            playerNear = true;
+            currentLine = 0;
+            dialogueText.text = dialogueLines.Length > 0 ? dialogueLines[0] : "";
+            if (dialogueLines.Length > 1) currentLine = 1;
         }
     }
 
@@ -40,9 +72,9 @@ public class TutorialNPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false;
-            if (dialogueManager != null)
-                dialogueManager.HideDialogue();
+            playerNear = false;
+            dialogueText.text = "";
+            currentLine = 0;
         }
     }
 }
