@@ -5,12 +5,12 @@ public class TutorialNPC : MonoBehaviour
 {
     [Header("Dialogue Settings")]
     public string[] dialogueLines;                  // Dialogue lines specific to this NPC
-    public TextMeshPro dialogueText;                // Reference to TMP text object
+    public TextMeshPro dialogueText;              
     public float fadeSpeed = 2f;                    // Speed of fade in/out
+    public SpriteRenderer dialogueBackground; 
 
     private int currentLine = 0;
     private bool playerNear = false;
-    private bool textVisible = false;
     private bool isTyping = false;
 
     private Color originalColor;
@@ -20,7 +20,7 @@ public class TutorialNPC : MonoBehaviour
         originalColor = dialogueText.color;
         originalColor.a = 0f;
         dialogueText.color = originalColor;
-        dialogueText.text = ""; // Start with blank text
+        dialogueText.text = ""; // Starts with blank text
     }
 
     void Update()
@@ -31,11 +31,23 @@ public class TutorialNPC : MonoBehaviour
 
     void HandleFade()
     {
-        Color currentColor = dialogueText.color;
         float targetAlpha = playerNear ? 1f : 0f;
-        currentColor.a = Mathf.MoveTowards(currentColor.a, targetAlpha, fadeSpeed * Time.deltaTime);
-        dialogueText.color = currentColor;
+
+        // Text Fresh Fade
+        Color textColor = dialogueText.color;
+        textColor.a = Mathf.MoveTowards(textColor.a, targetAlpha, fadeSpeed * Time.deltaTime);
+        dialogueText.color = textColor;
+
+        // Panel Fade
+        if (dialogueBackground != null)
+        {
+            Color bgColor = dialogueBackground.color;
+            bgColor.a = Mathf.MoveTowards(bgColor.a, targetAlpha, fadeSpeed * Time.deltaTime);
+            dialogueBackground.color = bgColor;
+        }
     }
+
+
 
     void HandleInput()
     {
