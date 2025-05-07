@@ -58,15 +58,26 @@ public class EchoAbility : MonoBehaviour
                 {
                     echoPlatform.RevealPlatform();
                 }
+                CollisionEchoPlatform collisionEchoPlatform = hit.collider.GetComponent<CollisionEchoPlatform>();
+                if (collisionEchoPlatform != null)
+                {
+                    collisionEchoPlatform.RevealPlatform();
+                }
             }
         }
 
         // Optional: spawn the echo cone visual
+        // Optional: spawn the echo cone visual
         if (echoVisualPrefab != null)
         {
-            GameObject echoEffect = Instantiate(echoVisualPrefab, transform.position, Quaternion.identity);
+            Vector2 offset = playerMovement != null && playerMovement.isFacingRight ? Vector2.right : Vector2.left;
+            float spawnDistance = 0.5f; // Adjust this value to change how far in front it spawns
+            Vector2 spawnPosition = (Vector2)transform.position + offset * spawnDistance;
+
+            GameObject echoEffect = Instantiate(echoVisualPrefab, spawnPosition, Quaternion.identity);
             Destroy(echoEffect, 0.5f);
         }
+
     }
 
     private Vector2 AngleToDirection(float angleDegrees)
