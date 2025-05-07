@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator playerAnimator;
+
     [Header("Movement Settings")]
     public float moveSpeed = 8f;
     public float acceleration = 10f;
@@ -40,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private bool canDash = true;
     private float dashEndTime;
-    public bool isFacingRight = true; 
+    public bool isFacingRight = true;
+
+    public CoinManager coinManager;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -87,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
                 isJumping = false;
+                playerAnimator.SetBool("Jumping", false);
             }
         }
     }
@@ -121,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
         float speedDiff = targetSpeed - rb.linearVelocity.x;
         float accelerationRate = isGrounded ? acceleration : acceleration * airControlFactor;
         float movement = speedDiff * accelerationRate * Time.fixedDeltaTime;
+        playerAnimator.SetFloat("Speed", Mathf.Abs(movement));
 
         rb.linearVelocity = new Vector2(rb.linearVelocity.x + movement, rb.linearVelocity.y);
 
@@ -128,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, targetSpeed, airControlFactor * Time.fixedDeltaTime), rb.linearVelocity.y);
         }
-        
+
         if (inputX > 0 && !isFacingRight)
             Flip();
         else if (inputX < 0 && isFacingRight)
@@ -145,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
         coyoteTimeCounter = 0;
         isJumping = true;
         jumpTimeCounter = maxJumpTime;
+        playerAnimator.SetBool("Jumping", true);
 
         if (Mathf.Abs(rb.linearVelocity.x) > moveSpeed * 0.8f)
             rb.linearVelocity = new Vector2(rb.linearVelocity.x * speedBoostFactor, jumpForce);
@@ -202,6 +209,12 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Shield active �� passed through spike safely.");
                 // ʲô����������ҿ��Դ���
             }
+        }
+
+        if (collision.CompareTag("Collectible"))
+        {
+            Destroy(collision.gameObject);
+            coinManager.coinCount += 1;
         }
     }
 }
