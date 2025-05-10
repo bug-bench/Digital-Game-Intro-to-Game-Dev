@@ -25,7 +25,7 @@ public class CollectiblesManager : MonoBehaviour
     void Update()
     {
         commonCollectibleText.text = " x " + commonCollectibleCount.ToString();
-        limitedCollectibleText.text = " x " + limitedCollectibleCount.ToString() + "/5";
+        limitedCollectibleText.text = " x " + limitedCollectibleCount.ToString() + "/3";
 
         // Check every frame if the timer has expired and the text should disappear
         if (commonCollectibleText.enabled && (Time.time >= timeWhenDisappear))
