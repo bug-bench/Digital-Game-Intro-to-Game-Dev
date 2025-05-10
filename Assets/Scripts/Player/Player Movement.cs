@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashEndTime;
     public bool isFacingRight = true;
 
-    public CoinManager coinManager;
+    public CollectiblesManager collectiblesManager;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -211,10 +211,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (collision.CompareTag("Collectible"))
+        if (collision.CompareTag("CommonCollectible"))
         {
             Destroy(collision.gameObject);
-            coinManager.coinCount += 1;
+            collectiblesManager.commonCollectibleCount += 1;
+        }
+        if (collision.CompareTag("LimitedCollectible"))
+        {
+            Destroy(collision.gameObject);
+            collectiblesManager.limitedCollectibleCount += 1;
         }
     }
 }
