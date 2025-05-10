@@ -91,7 +91,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
                 isJumping = false;
-                playerAnimator.SetBool("Jumping", false);
             }
         }
     }
@@ -151,7 +150,8 @@ public class PlayerMovement : MonoBehaviour
         coyoteTimeCounter = 0;
         isJumping = true;
         jumpTimeCounter = maxJumpTime;
-        playerAnimator.SetBool("Jumping", true);
+
+        playerAnimator.SetTrigger("JumpTrigger");
 
         if (Mathf.Abs(rb.linearVelocity.x) > moveSpeed * 0.8f)
             rb.linearVelocity = new Vector2(rb.linearVelocity.x * speedBoostFactor, jumpForce);
@@ -177,7 +177,10 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckGrounded() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        playerAnimator.SetBool("Grounded", isGrounded);
     }
+
     void Flip()
     {
         isFacingRight = !isFacingRight;
