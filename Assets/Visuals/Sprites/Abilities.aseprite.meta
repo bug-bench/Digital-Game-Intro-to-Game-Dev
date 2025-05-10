@@ -2,7 +2,22 @@ fileFormatVersion: 2
 guid: a867c4e7c66014b52bb22d11b13354d0
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Echo
+    second: {fileID: 7400000, guid: 089986a851c70412384d3cbd65f65e1d, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Shed
+    second: {fileID: 7400000, guid: db175783faa9546daae4bd747287eb18, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Shield
+    second: {fileID: 7400000, guid: 95ed1d5de4a084c17abe1c7a5d658738, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -36,7 +51,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6

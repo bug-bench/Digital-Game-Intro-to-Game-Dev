@@ -877,12 +877,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 976818940345092705, guid: 06d26f6447da20f4f9135437c704aff7, type: 3}
     - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.21
       objectReference: {fileID: 0}
     - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.14
+      value: -3.849
       objectReference: {fileID: 0}
     - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -930,19 +938,19 @@ PrefabInstance:
       objectReference: {fileID: 2032545644}
     - target: {fileID: 5550584908284485848, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5550584908284485848, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5550584908284485848, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5550584908284485848, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -0.522
       objectReference: {fileID: 0}
     - target: {fileID: 5550584908284485848, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_ConstrainProportionsScale

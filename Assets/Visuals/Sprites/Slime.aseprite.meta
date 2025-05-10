@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638822370622896970
+  platformSettingsDirtyTick: 638823502937091890
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -426,7 +426,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 70
+      y: 66
       width: 14
       height: 21
     spriteID: ff0e0c8037ba74969b73f9a01dbb34e2
@@ -437,7 +437,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 70}
+    uvTransform: {x: 4, y: 66}
   - name: Frame_15
     originalName: 
     pivot: {x: 0.50000006, y: 0}
@@ -449,7 +449,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 14
-      height: 25
+      height: 23
     spriteID: f2b8ec094413c4dc4a676f4b3587ec49
     spriteBone: []
     spriteOutline: []
@@ -468,9 +468,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 37
+      y: 35
       width: 14
-      height: 25
+      height: 23
     spriteID: a9801c0643444470cbfeb3d329831d9a
     spriteBone: []
     spriteOutline: []
@@ -479,7 +479,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 37}
+    uvTransform: {x: 4, y: 35}
   - name: Frame_17
     originalName: 
     pivot: {x: 0.50000006, y: 0}
@@ -489,7 +489,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 99
+      y: 95
       width: 14
       height: 21
     spriteID: 81fa253a2e9894784ad8db9459fbd4f6
@@ -500,7 +500,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 99}
+    uvTransform: {x: 4, y: 95}
   - name: Frame_18
     originalName: 
     pivot: {x: 0.49999997, y: 0}
@@ -720,7 +720,7 @@ ScriptedImporter:
         x: 17
         y: 0
         width: 14
-        height: 25
+        height: 23
       spriteId: f2b8ec094413c4dc4a676f4b3587ec49
     - name: Frame_16
       frameIndex: 16
@@ -729,7 +729,7 @@ ScriptedImporter:
         x: 17
         y: 0
         width: 14
-        height: 25
+        height: 23
       spriteId: a9801c0643444470cbfeb3d329831d9a
     - name: Frame_17
       frameIndex: 17
