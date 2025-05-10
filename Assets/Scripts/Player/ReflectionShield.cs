@@ -5,6 +5,8 @@ public class ReflectionShield : MonoBehaviour
     public GameObject shieldVisual;
     public float duration = 3f;
     private bool isActive = false;
+
+    public Animator shieldAnim;
     
     [Header("Control Settings")]
     public bool keyToggle = false; // Toggle between Z and K
@@ -20,8 +22,11 @@ public class ReflectionShield : MonoBehaviour
     {
         isActive = true;
 
+        shieldAnim.SetBool("Shield", true);
+
         if (shieldVisual != null)
             shieldVisual.SetActive(true);
+ 
 
         Physics2D.IgnoreLayerCollision(
             LayerMask.NameToLayer("Player"),
@@ -35,6 +40,8 @@ public class ReflectionShield : MonoBehaviour
     void DeactivateShield()
     {
         isActive = false;
+
+        shieldAnim.SetBool("Shield", false);
 
         if (shieldVisual != null)
             shieldVisual.SetActive(false);
