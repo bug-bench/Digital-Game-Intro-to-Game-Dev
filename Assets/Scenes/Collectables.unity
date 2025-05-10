@@ -3911,7 +3911,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666689acb9eda44569c54dd7919a42cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCount: 0
+  commonCollectibleCount: 0
+  commonCollectibleText: {fileID: 1077694115}
+  commonCollectibleImg: {fileID: 271839582}
+  limitedCollectibleCount: 0
+  limitedCollectibleText: {fileID: 2067741189}
+  limitedCollectibleImg: {fileID: 710411169}
 --- !u!4 &319004175
 Transform:
   m_ObjectHideFlags: 0
@@ -4264,6 +4269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2821314302392681926, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 94252026ef2294e8dacda504d7aec391, type: 2}
     - target: {fileID: 3918175265674436372, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: coinManager
       value: 
@@ -4290,7 +4299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5550584908284485848, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6947955491343256585, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8241,7 +8250,7 @@ MonoBehaviour:
     m_Bits: 8
   keyToggle: 1
   isFacingRight: 1
-  coinManager: {fileID: 0}
+  collectiblesManager: {fileID: 0}
 --- !u!1001 &2177362493719965635
 PrefabInstance:
   m_ObjectHideFlags: 0
