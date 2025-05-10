@@ -1,70 +1,58 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 public class TutorialNPC : MonoBehaviour
 {
-    [Header("Dialogue Settings")]
-    public string[] dialogueLines;                  // Dialogue lines specific to this NPC
-    public TextMeshPro dialogueText;              
-    public float fadeSpeed = 2f;                    // Speed of fade in/out
-    public SpriteRenderer dialogueBackground; 
+    public GameObject spriteObject;             // needs a child object with the SpriteRenderer
+    public Sprite injuredSprite;                // Sprite when NPC is injured
+    public Sprite healedSprite;                 // Sprite after the player interacts with them - presses W
 
+    public GameObject panelObject;               // Panel object
+    public TextMeshPro textComponent;           // TextMeshPro component
+
+    [TextArea] public string startingDialogue = "Help... I can't move..."; // Change in inspector if you want something different
+    [TextArea] public string[] dialogueLines;   // Dialogue when player interacts
     private int currentLine = 0;
-    private bool playerNear = false;
-    private bool isTyping = false;
 
-    private Color originalColor;
+    private SpriteRenderer childSpriteRenderer;
+    private bool playerInRange = false;
+    private bool interacted = false;
 
     void Start()
     {
-        originalColor = dialogueText.color;
-        originalColor.a = 0f;
-        dialogueText.color = originalColor;
-        dialogueText.text = ""; // Starts with blank text
+        if (spriteObject != null)
+            childSpriteRenderer = spriteObject.GetComponent<SpriteRenderer>();
+
+        if (childSpriteRenderer != null && injuredSprite != null)
+            childSpriteRenderer.sprite = injuredSprite;
+
+        if (panelObject != null && textComponent != null)
+        {
+            textComponent.text = startingDialogue;
+            StartCoroutine(FadeTextIn(textComponent, 0.5f));
+            StartCoroutine(FadeOutAfterDelay(4f));
+        }
     }
 
     void Update()
     {
-        HandleFade();
-        HandleInput();
-    }
-
-    void HandleFade()
-    {
-        float targetAlpha = playerNear ? 1f : 0f;
-
-        // Text Fresh Fade
-        Color textColor = dialogueText.color;
-        textColor.a = Mathf.MoveTowards(textColor.a, targetAlpha, fadeSpeed * Time.deltaTime);
-        dialogueText.color = textColor;
-
-        // Panel Fade
-        if (dialogueBackground != null)
+        if (playerInRange && Input.GetKeyDown(KeyCode.W))
         {
-            Color bgColor = dialogueBackground.color;
-            bgColor.a = Mathf.MoveTowards(bgColor.a, targetAlpha, fadeSpeed * Time.deltaTime);
-            dialogueBackground.color = bgColor;
-        }
-    }
-
-
-
-    void HandleInput()
-    {
-        if (!playerNear) return;
-
-        if (Input.GetKeyDown(KeyCode.W) && !isTyping)
-        {
-            if (currentLine < dialogueLines.Length)
+            if (!interacted)
             {
-                dialogueText.text = dialogueLines[currentLine];
-                currentLine++;
+                interacted = true;
+
+
+                if (childSpriteRenderer != null && healedSprite != null)
+                    childSpriteRenderer.sprite = healedSprite;
+
+                currentLine = 0;
+                ShowNextLine();
             }
             else
             {
-                // End of dialogue
-                dialogueText.text = "";
-                currentLine = 0;
+                ShowNextLine();
             }
         }
     }
@@ -73,10 +61,7 @@ public class TutorialNPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerNear = true;
-            currentLine = 0;
-            dialogueText.text = dialogueLines.Length > 0 ? dialogueLines[0] : "";
-            if (dialogueLines.Length > 1) currentLine = 1;
+            playerInRange = true;
         }
     }
 
@@ -84,9 +69,66 @@ public class TutorialNPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerNear = false;
-            dialogueText.text = "";
-            currentLine = 0;
+            playerInRange = false;
+        }
+    }
+
+    void ShowNextLine()
+    {
+        if (textComponent != null && currentLine < dialogueLines.Length)
+        {
+            StopAllCoroutines();
+            textComponent.text = dialogueLines[currentLine];
+            StartCoroutine(FadeTextIn(textComponent, 0.25f));
+            currentLine++;
+        }
+        else
+        {
+            StartCoroutine(FadeTextOut(textComponent, 0.5f));
+        }
+    }
+
+    IEnumerator FadeTextIn(TextMeshPro tmp, float duration)
+    {
+        float elapsed = 0f;
+        Color c = tmp.color;
+        c.a = 0f;
+        tmp.color = c;
+        panelObject.SetActive(true);
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            c.a = Mathf.Clamp01(elapsed / duration);
+            tmp.color = c;
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeTextOut(TextMeshPro tmp, float duration)
+    {
+        float elapsed = 0f;
+        Color c = tmp.color;
+        c.a = 1f;
+        tmp.color = c;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            c.a = 1f - Mathf.Clamp01(elapsed / duration);
+            tmp.color = c;
+            yield return null;
+        }
+
+        panelObject.SetActive(false);
+    }
+
+    IEnumerator FadeOutAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (!interacted)
+        {
+            StartCoroutine(FadeTextOut(textComponent, 0.5f));
         }
     }
 }
