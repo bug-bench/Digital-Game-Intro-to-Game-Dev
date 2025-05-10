@@ -67,7 +67,6 @@ public class EchoAbility : MonoBehaviour
         }
 
         // Optional: spawn the echo cone visual
-        // Optional: spawn the echo cone visual
         if (echoVisualPrefab != null)
         {
             Vector2 offset = playerMovement != null && playerMovement.isFacingRight ? Vector2.right : Vector2.left;
@@ -75,6 +74,12 @@ public class EchoAbility : MonoBehaviour
             Vector2 spawnPosition = (Vector2)transform.position + offset * spawnDistance;
 
             GameObject echoEffect = Instantiate(echoVisualPrefab, spawnPosition, Quaternion.identity);
+
+            if (!playerMovement.isFacingRight) {
+                Vector3 scale = echoEffect.transform.localScale;
+                scale *= -1;
+                echoEffect.transform.localScale = scale;
+            }
             Destroy(echoEffect, 0.5f);
         }
 
