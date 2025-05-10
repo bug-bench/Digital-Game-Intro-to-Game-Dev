@@ -3841,7 +3841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -359.09998, y: 208.59998}
+  m_AnchoredPosition: {x: -359.09998, y: 185.99994}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &271839582
@@ -4639,6 +4639,7 @@ Transform:
   m_Children:
   - {fileID: 224692839}
   - {fileID: 1488608597}
+  - {fileID: 1549421791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &679647818 stripped
@@ -4712,7 +4713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -204.4, y: -38.400024}
+  m_AnchoredPosition: {x: -204.4, y: -39}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &710411169
@@ -5173,7 +5174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -314.1, y: 209}
+  m_AnchoredPosition: {x: -314.1, y: 188.1}
   m_SizeDelta: {x: 100, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1077694115
@@ -7710,7 +7711,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2134647470}
-  - {fileID: 1549421791}
   m_Father: {fileID: 676525947}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1488608598
@@ -7762,7 +7762,7 @@ RectTransform:
   - {fileID: 2067741188}
   - {fileID: 271839581}
   - {fileID: 710411168}
-  m_Father: {fileID: 1488608597}
+  m_Father: {fileID: 676525947}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8139,7 +8139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -136.3, y: 208.9}
+  m_AnchoredPosition: {x: -140, y: 188.1}
   m_SizeDelta: {x: 150, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067741189
