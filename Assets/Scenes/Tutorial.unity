@@ -3913,8 +3913,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commonCollectibleCount: 0
   commonCollectibleText: {fileID: 1077694115}
+  commonCollectibleImg: {fileID: 271839582}
   limitedCollectibleCount: 0
   limitedCollectibleText: {fileID: 2067741189}
+  limitedCollectibleImg: {fileID: 710411169}
 --- !u!4 &319004175
 Transform:
   m_ObjectHideFlags: 0
