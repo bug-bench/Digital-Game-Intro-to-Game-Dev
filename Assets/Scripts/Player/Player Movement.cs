@@ -215,11 +215,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(collision.gameObject);
             collectiblesManager.commonCollectibleCount += 1;
+            collectiblesManager.EnableUI();
         }
         if (collision.CompareTag("LimitedCollectible"))
         {
             Destroy(collision.gameObject);
             collectiblesManager.limitedCollectibleCount += 1;
+            collectiblesManager.EnableUI();
         }
     }
 }
