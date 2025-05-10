@@ -4061,15 +4061,15 @@ PrefabInstance:
       objectReference: {fileID: 1415700037}
     - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4110,6 +4110,10 @@ PrefabInstance:
     - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1958484851504716387, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_Name
@@ -4162,6 +4166,10 @@ PrefabInstance:
     - target: {fileID: 5550584908284485848, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.505
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947955491343256585, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7743632107948404208, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: abilityMenuUI
@@ -7581,7 +7589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2667337122125652779
 SpriteRenderer:
   m_ObjectHideFlags: 0
