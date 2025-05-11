@@ -24,6 +24,13 @@ public class Door : MonoBehaviour
                 StartCoroutine(fader.FadeOutIn(() =>
                 {
                     player.position = destination.position;
+                    
+                    // Set checkpoint
+                    PlayerHealthManager health = player.GetComponent<PlayerHealthManager>();
+                    if (health != null)
+                    {
+                        health.SetCheckpoint(destination.position);
+                    }
 
                     Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
                     if (rb != null)
