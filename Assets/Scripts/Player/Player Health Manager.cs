@@ -10,6 +10,8 @@ public class PlayerHealthManager : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerMovement movement;
 
+    public DadActivation dadActivator; 
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,6 +55,12 @@ public class PlayerHealthManager : MonoBehaviour
     {
         Debug.Log("Player died. Respawning...");
         currentHits = 0;
+        
+        if (dadActivator != null)
+        {
+            dadActivator.ResetDad();
+        }
+
         movement.SetInputEnabled(false);
         transform.position = checkpointPosition;
         rb.linearVelocity = Vector2.zero;
