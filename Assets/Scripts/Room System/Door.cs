@@ -8,7 +8,8 @@ public class Door : MonoBehaviour
     private bool playerInRange = false;
     private Transform player;
     private ScreenFader fader;
-    public RoomBounds room; 
+    public RoomBounds room;
+    public Animator animator;
 
     private void Start()
     {
@@ -24,6 +25,13 @@ public class Door : MonoBehaviour
                 StartCoroutine(fader.FadeOutIn(() =>
                 {
                     player.position = destination.position;
+                    
+                    // Set checkpoint
+                    PlayerHealthManager health = player.GetComponent<PlayerHealthManager>();
+                    if (health != null)
+                    {
+                        health.SetCheckpoint(destination.position);
+                    }
 
                     Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
                     if (rb != null)
@@ -51,6 +59,7 @@ public class Door : MonoBehaviour
         {
             player = other.transform;
             playerInRange = true;
+            //animator.SetTrigger("EnterDoor");
         }
     }
 
@@ -60,6 +69,7 @@ public class Door : MonoBehaviour
         {
             playerInRange = false;
             player = null;
+            //animator.ResetTrigger("EnterDoor");
         }
     }
 }

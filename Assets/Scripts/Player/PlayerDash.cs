@@ -7,6 +7,8 @@ public class PlayerDash : MonoBehaviour
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
 
+    public Animator playerAnimator;
+
     private Rigidbody2D rb;
     private PlayerMovement playerMovement; 
     private bool isDashing = false;
@@ -38,6 +40,8 @@ public class PlayerDash : MonoBehaviour
         isDashing = true;
         canDash = false;
         dashEndTime = Time.time + dashDuration;
+
+        playerAnimator.SetTrigger("DashTrigger");
 
         float dashDirection = playerMovement.isFacingRight ? 1f : -1f;
         rb.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f);

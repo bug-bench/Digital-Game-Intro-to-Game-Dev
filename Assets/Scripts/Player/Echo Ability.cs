@@ -3,14 +3,14 @@ using System.Collections;
 
 public class EchoAbility : MonoBehaviour
 {
-    public Animator playerAnimator;
+    public Animator echoAnim;
 
     [Header("Echo Ability Settings")]
     [Header("Control Settings")]
     public bool keyToggle = false; // Toggle between Z and K
     public float echoRange = 5f;
     public LayerMask echoLayerMask;
-    public GameObject echoVisualPrefab;
+    public GameObject echoVisual;
     private PlayerMovement playerMovement;
 
     // on start
@@ -25,14 +25,12 @@ public class EchoAbility : MonoBehaviour
         if ((keyToggle && Input.GetKeyDown(KeyCode.K)) || (!keyToggle && Input.GetKeyDown(KeyCode.Z)))
         {
             SendEcho();
-            playerAnimator.SetBool("Echo", true);
         }
     }
 
     // Sends the Echo Ability as a raycast and visualises it
     void SendEcho()
     {
-        playerAnimator.SetBool("Echo", false);
 
         Vector2 baseDirection = playerMovement != null && playerMovement.isFacingRight ? Vector2.right : Vector2.left;
 
@@ -43,6 +41,26 @@ public class EchoAbility : MonoBehaviour
 
         for (int i = 0; i <= rayCount; i++)
         {
+
+            // Optional: spawn the echo cone visual
+            if (echoVisual != null)
+            {
+
+                Vector2 offset = playerMovement != null && playerMovement.isFacingRight ? Vector2.right : Vector2.left;
+                float spawnDistance = 0.5f; // Adjust this value to change how far in front it spawns
+                Vector2 spawnPosition = (Vector2)transform.position + offset * spawnDistance;
+
+                GameObject echoEffect = Instantiate(echoVisual, spawnPosition, Quaternion.identity);
+
+                if (!playerMovement.isFacingRight)
+                {
+                    Vector3 scale = echoEffect.transform.localScale;
+                    scale *= -1;
+                    echoEffect.transform.localScale = scale;
+                }
+
+                Destroy(echoEffect, 0.5f);
+            }
 
             float angle = startAngle + i * angleStep;
             Vector2 dir = AngleToDirection(angle);
@@ -65,24 +83,6 @@ public class EchoAbility : MonoBehaviour
                 }
             }
         }
-
-        // Optional: spawn the echo cone visual
-        if (echoVisualPrefab != null)
-        {
-            Vector2 offset = playerMovement != null && playerMovement.isFacingRight ? Vector2.right : Vector2.left;
-            float spawnDistance = 0.5f; // Adjust this value to change how far in front it spawns
-            Vector2 spawnPosition = (Vector2)transform.position + offset * spawnDistance;
-
-            GameObject echoEffect = Instantiate(echoVisualPrefab, spawnPosition, Quaternion.identity);
-
-            if (!playerMovement.isFacingRight) {
-                Vector3 scale = echoEffect.transform.localScale;
-                scale *= -1;
-                echoEffect.transform.localScale = scale;
-            }
-            Destroy(echoEffect, 0.5f);
-        }
-
     }
 
     private Vector2 AngleToDirection(float angleDegrees)
