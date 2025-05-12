@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1354845620744036612}
   - component: {fileID: 1096486149392329140}
   - component: {fileID: 5788703210925865574}
+  - component: {fileID: 5234219996097792825}
   - component: {fileID: 3918175265674436372}
   - component: {fileID: 5617627504659259812}
   - component: {fileID: 7743632107948404208}
@@ -36,8 +37,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7, y: -4.1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5550584908284485848}
   - {fileID: 8154556409466043223}
@@ -117,6 +118,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5234219996097792825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958484851504716387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc59c334b466924e94a1de4aa2c6f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHits: 2
 --- !u!114 &3918175265674436372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +165,7 @@ MonoBehaviour:
     m_Bits: 8
   keyToggle: 1
   isFacingRight: 1
-  coinManager: {fileID: 0}
+  collectiblesManager: {fileID: 0}
 --- !u!114 &5617627504659259812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldVisual: {fileID: 3208099204566872288}
   duration: 3
+  shieldAnim: {fileID: 5387801866968631672}
   keyToggle: 1
 --- !u!114 &4918187444956177508
 MonoBehaviour:
@@ -257,7 +272,7 @@ MonoBehaviour:
   echoLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  echoVisualPrefab: {fileID: 0}
+  echoVisualPrefab: {fileID: 976818940345092705, guid: 06d26f6447da20f4f9135437c704aff7, type: 3}
 --- !u!114 &6468799245662933636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +304,7 @@ Animator:
   m_GameObject: {fileID: 1958484851504716387}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 5950715386924290362, guid: a867c4e7c66014b52bb22d11b13354d0, type: 3}
+  m_Controller: {fileID: 9100000, guid: e5002c6d0b5c449c2a35f651b502b37e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -329,7 +344,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1354845620744036612}
@@ -378,7 +393,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 6310296523492593272, guid: a867c4e7c66014b52bb22d11b13354d0, type: 3}
   m_Color: {r: 1, g: 0.9043125, b: 0, a: 0.34117648}
   m_FlipX: 0
   m_FlipY: 0
@@ -450,7 +465,7 @@ Transform:
   m_GameObject: {fileID: 7439209007547619004}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -514,8 +529,8 @@ Transform:
   m_GameObject: {fileID: 8911147397573696847}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.7, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalPosition: {x: 0, y: -0.505, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6947955491343256585}
@@ -586,7 +601,7 @@ Animator:
   m_GameObject: {fileID: 8911147397573696847}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: -177465846536832243, guid: 9ae69d282ab7d489ba29fe7377c9673c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 94252026ef2294e8dacda504d7aec391, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
