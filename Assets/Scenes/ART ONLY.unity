@@ -3601,6 +3601,16 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &162534628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8911147397573696847, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+  m_PrefabInstance: {fileID: 609727921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &162534630 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2821314302392681926, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+  m_PrefabInstance: {fileID: 609727921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &169298352
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,6 +4275,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.505
       objectReference: {fileID: 0}
+    - target: {fileID: 5617627504659259812, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 162534630}
     - target: {fileID: 6947955491343256585, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.5
@@ -8669,6 +8683,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 20.14
       objectReference: {fileID: 0}
+    - target: {fileID: 5590722670310236872, guid: af2091de4a31d404ebaa1f7d8b56638e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 162534630}
+    - target: {fileID: 5590722670310236872, guid: af2091de4a31d404ebaa1f7d8b56638e, type: 3}
+      propertyPath: exitingDoor
+      value: 
+      objectReference: {fileID: 1852455154305718374, guid: 9ae69d282ab7d489ba29fe7377c9673c, type: 3}
+    - target: {fileID: 5590722670310236872, guid: af2091de4a31d404ebaa1f7d8b56638e, type: 3}
+      propertyPath: PlayerSprite
+      value: 
+      objectReference: {fileID: 162534628}
+    - target: {fileID: 5590722670310236872, guid: af2091de4a31d404ebaa1f7d8b56638e, type: 3}
+      propertyPath: enteringDoor
+      value: 
+      objectReference: {fileID: -7725214698960426443, guid: 9ae69d282ab7d489ba29fe7377c9673c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8935,6 +8965,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 1
+  playerAnimator: {fileID: 0}
 --- !u!4 &8544720627734092281
 Transform:
   m_ObjectHideFlags: 0
