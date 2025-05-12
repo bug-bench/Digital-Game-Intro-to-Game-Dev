@@ -44,19 +44,13 @@ public class PlayerMovement : MonoBehaviour
     private float dashEndTime;
     public bool isFacingRight = true;
 
-    private bool inputEnabled = true;
+    public CoinManager coinManager;
 
-    public CollectiblesManager collectiblesManager;
-
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-        if (!inputEnabled) return;
-
+    void Update() {
         HandleInput();
         HandleCoyoteTime();
         HandleJumpBuffer();
@@ -64,23 +58,13 @@ public class PlayerMovement : MonoBehaviour
         CheckGrounded();
     }
 
-    void FixedUpdate()
-    {
-        if (!inputEnabled) return;
-
-        if (!isDashing)
-        {
+    void FixedUpdate() {
+        if (!isDashing) {
             ApplyMovement();
         }
     }
 
-    public void SetInputEnabled(bool enabled)
-    {
-        inputEnabled = enabled;
-    }
-
-    void HandleInput()
-    {
+    void HandleInput() {
         inputX = 0;
 
         // Movement input
@@ -111,22 +95,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void HandleCoyoteTime()
-    {
+    void HandleCoyoteTime() {
         if (isGrounded)
             coyoteTimeCounter = coyoteTime;
         else
             coyoteTimeCounter -= Time.deltaTime;
     }
 
-    void HandleJumpBuffer()
-    {
+    void HandleJumpBuffer() {
         if (jumpBufferCounter > 0)
             jumpBufferCounter -= Time.deltaTime;
     }
 
-    void HandleDash()
-    {
+    void HandleDash() {
         if ((keyToggle && Input.GetKeyDown(KeyCode.J)) || (!keyToggle && Input.GetKeyDown(KeyCode.C)))
         {
             if (canDash)
@@ -139,8 +120,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void ApplyMovement()
-    {
+    void ApplyMovement() {
         float targetSpeed = inputX * moveSpeed;
         float speedDiff = targetSpeed - rb.linearVelocity.x;
         float accelerationRate = isGrounded ? acceleration : acceleration * airControlFactor;
@@ -158,15 +138,14 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         else if (inputX < 0 && isFacingRight)
             Flip();
-
+        
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
         {
             Jump();
         }
     }
 
-    void Jump()
-    {
+    void Jump() {
         jumpBufferCounter = 0;
         coyoteTimeCounter = 0;
         isJumping = true;
@@ -180,29 +159,25 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
 
-    void Dash()
-    {
+    void Dash() {
         isDashing = true;
         canDash = false;
-
         dashEndTime = Time.time + dashDuration;
         rb.linearVelocity = new Vector2((inputX == 0 ? transform.localScale.x : inputX) * dashSpeed, 0);
     }
 
-    void StopDash()
-    {
+    void StopDash() {
         isDashing = false;
         Invoke("ResetDash", dashCooldown);
     }
 
-    void ResetDash()
-    {
+    void ResetDash() {
         canDash = true;
     }
 
-    void CheckGrounded()
-    {
+    void CheckGrounded() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
         playerAnimator.SetBool("Grounded", isGrounded);
     }
 
@@ -214,15 +189,12 @@ public class PlayerMovement : MonoBehaviour
         spriteTransform.localScale = scale;
     }
 
-    void OnDrawGizmosSelected()
-    {
-        if (groundCheck != null)
-        {
+    void OnDrawGizmosSelected() {
+        if (groundCheck != null) {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Spike"))
@@ -230,30 +202,22 @@ public class PlayerMovement : MonoBehaviour
             ReflectionShield shield = GetComponent<ReflectionShield>();
             if (shield == null || !shield.IsShieldActive())
             {
-                PlayerHealthManager health = GetComponent<PlayerHealthManager>();
-                if (health != null)
-                {
-                    health.TakeSpikeDamage(collision.transform.position, 10f); // Adjust knockback force
-                }
+                // û���� �� ��ұ�����
+                Vector2 bounceDirection = (transform.position - collision.transform.position).normalized;
+                rb.AddForce(bounceDirection * 1000f);
+                Debug.Log("Hit spike! Knocked back!");
             }
             else
             {
-                Debug.Log("Shield active – passed through spike safely.");
+                Debug.Log("Shield active �� passed through spike safely.");
+                // ʲô����������ҿ��Դ���
             }
         }
 
-        if (collision.CompareTag("CommonCollectible"))
+        if (collision.CompareTag("Collectible"))
         {
             Destroy(collision.gameObject);
-            collectiblesManager.commonCollectibleCount += 1;
-            collectiblesManager.EnableUI();
-        }
-
-        if (collision.CompareTag("LimitedCollectible"))
-        {
-            Destroy(collision.gameObject);
-            collectiblesManager.limitedCollectibleCount += 1;
-            collectiblesManager.EnableUI();
+            coinManager.coinCount += 1;
         }
     }
 }

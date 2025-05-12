@@ -12,18 +12,21 @@ public class GasZone : MonoBehaviour
             ReflectionShield shield = collision.GetComponent<ReflectionShield>();
             if (shield == null || !shield.IsShieldActive())
             {
-                PlayerHealthManager health = collision.GetComponent<PlayerHealthManager>();
-                if (health != null)
+
+                Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+                if (rb != null)
                 {
-                    health.TakeGasDamage(transform.position, knockbackForce);
+                    Vector2 direction = (collision.transform.position - transform.position).normalized;
+                    rb.AddForce(direction * knockbackForce);
                 }
+
+
+                Debug.Log("Player is in toxic gas without shield!");
             }
-            Debug.Log("Player is in toxic gas without shield!");
-        }
-        else
-        {
-            Debug.Log("Player is protected from gas.");
+            else
+            {
+                Debug.Log("Player is protected from gas.");
+            }
         }
     }
 }
-
