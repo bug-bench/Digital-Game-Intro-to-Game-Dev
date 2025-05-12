@@ -184,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isDashing = true;
         canDash = false;
+
         dashEndTime = Time.time + dashDuration;
         rb.linearVelocity = new Vector2((inputX == 0 ? transform.localScale.x : inputX) * dashSpeed, 0);
     }

@@ -8,7 +8,8 @@ public class Door : MonoBehaviour
     private bool playerInRange = false;
     private Transform player;
     private ScreenFader fader;
-    public RoomBounds room; 
+    public RoomBounds room;
+    public Animator animator;
 
     private void Start()
     {
@@ -58,6 +59,7 @@ public class Door : MonoBehaviour
         {
             player = other.transform;
             playerInRange = true;
+            //animator.SetTrigger("EnterDoor");
         }
     }
 
@@ -67,6 +69,7 @@ public class Door : MonoBehaviour
         {
             playerInRange = false;
             player = null;
+            //animator.ResetTrigger("EnterDoor");
         }
     }
 }
