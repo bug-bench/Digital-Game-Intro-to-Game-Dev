@@ -397,7 +397,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 571003902}
   m_Father: {fileID: 533407920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -12825,7 +12826,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f63f48e004eec4949a98a87db9643f38, type: 3}
+    m_Font: {fileID: 12800000, guid: 34fbdec9bdb22493f81b651c889458e3, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -19426,6 +19427,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 422016515121223664, guid: a3fb487514dcd40b6afd18e856ff4ff4, type: 3}
   m_PrefabInstance: {fileID: 564939989}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &571003901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571003902}
+  - component: {fileID: 571003903}
+  - component: {fileID: 571003904}
+  m_Layer: 5
+  m_Name: Pogo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &571003902
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571003901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 13380883}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &571003903
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571003901}
+  m_CullTransparentMesh: 1
+--- !u!114 &571003904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571003901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -306182896488099832, guid: fa52538293aec415085fc757a0c7b332, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &575077362
 GameObject:
   m_ObjectHideFlags: 0
@@ -21185,11 +21261,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.2287712, y: 1.5145352}
   m_EdgeRadius: 0
---- !u!95 &786064468 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5387801866968631672, guid: e0f908f31335be642b01763f716e7dab, type: 3}
-  m_PrefabInstance: {fileID: 1067297237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &786064478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1354845620744036612, guid: e0f908f31335be642b01763f716e7dab, type: 3}
@@ -25976,7 +26047,7 @@ PrefabInstance:
     - target: {fileID: 1046949330260595603, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: shieldAnim
       value: 
-      objectReference: {fileID: 786064468}
+      objectReference: {fileID: 0}
     - target: {fileID: 1046949330260595603, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: shieldVisual
       value: 
@@ -26062,6 +26133,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3918175265674436372, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: dashSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 3bc0ff817a9075f4ab96e82e31066f66, type: 3}
+    - target: {fileID: 3918175265674436372, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: jumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 06cfdf4b5745af64c8fe8c98a0ab5af3, type: 3}
+    - target: {fileID: 3918175265674436372, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: collectiblesManager
       value: 
       objectReference: {fileID: 1885415132}
@@ -26106,6 +26185,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7743632107948404208, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      propertyPath: availableAbilities.Array.data[0].uiIcon
+      value: 
+      objectReference: {fileID: 571003904}
+    - target: {fileID: 7743632107948404208, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: availableAbilities.Array.data[0].uiLabel
       value: 
       objectReference: {fileID: 13380884}
@@ -26128,8 +26211,113 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1958484851504716387, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1067297239}
   m_SourcePrefab: {fileID: 100100000, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+--- !u!1 &1067297238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1958484851504716387, guid: e0f908f31335be642b01763f716e7dab, type: 3}
+  m_PrefabInstance: {fileID: 1067297237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1067297239
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067297238}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1076345706
 GameObject:
   m_ObjectHideFlags: 0
@@ -30493,7 +30681,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f63f48e004eec4949a98a87db9643f38, type: 3}
+    m_Font: {fileID: 12800000, guid: 34fbdec9bdb22493f81b651c889458e3, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
