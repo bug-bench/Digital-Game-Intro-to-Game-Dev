@@ -52,7 +52,7 @@ public class Door : MonoBehaviour
         {
             player = other.transform;
             playerInRange = true;
-            animator.SetTrigger("EnterDoor");
+            //animator.SetTrigger("EnterDoor");
         }
     }
 
@@ -62,7 +62,7 @@ public class Door : MonoBehaviour
         {
             playerInRange = false;
             player = null;
-            animator.ResetTrigger("EnterDoor");
+            //animator.ResetTrigger("EnterDoor");
         }
     }
 }

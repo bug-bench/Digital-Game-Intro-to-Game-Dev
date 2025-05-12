@@ -25,14 +25,13 @@ public class EchoAbility : MonoBehaviour
         if ((keyToggle && Input.GetKeyDown(KeyCode.K)) || (!keyToggle && Input.GetKeyDown(KeyCode.Z)))
         {
             SendEcho();
-            playerAnimator.SetBool("Echo", true);
         }
     }
 
     // Sends the Echo Ability as a raycast and visualises it
     void SendEcho()
     {
-        playerAnimator.SetBool("Echo", false);
+        playerAnimator.SetBool("Echo", true);
 
         Vector2 baseDirection = playerMovement != null && playerMovement.isFacingRight ? Vector2.right : Vector2.left;
 
@@ -69,6 +68,8 @@ public class EchoAbility : MonoBehaviour
         // Optional: spawn the echo cone visual
         if (echoVisualPrefab != null)
         {
+            echoVisualPrefab.SetActive(true);
+
             Vector2 offset = playerMovement != null && playerMovement.isFacingRight ? Vector2.right : Vector2.left;
             float spawnDistance = 0.5f; // Adjust this value to change how far in front it spawns
             Vector2 spawnPosition = (Vector2)transform.position + offset * spawnDistance;
@@ -80,7 +81,11 @@ public class EchoAbility : MonoBehaviour
                 scale *= -1;
                 echoEffect.transform.localScale = scale;
             }
+            echoVisualPrefab.SetActive(false);
+
             Destroy(echoEffect, 0.5f);
+
+            playerAnimator.SetBool("Echo", false);
         }
 
     }
