@@ -162,6 +162,9 @@ public class PlayerMovement : MonoBehaviour
     void Dash() {
         isDashing = true;
         canDash = false;
+
+        playerAnimator.SetTrigger("DashTrigger");
+
         dashEndTime = Time.time + dashDuration;
         rb.linearVelocity = new Vector2((inputX == 0 ? transform.localScale.x : inputX) * dashSpeed, 0);
     }
