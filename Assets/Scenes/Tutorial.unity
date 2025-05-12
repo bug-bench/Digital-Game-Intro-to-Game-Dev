@@ -8717,6 +8717,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   keyToggle: 1
+  jumpSFX: {fileID: 0}
+  dashSFX: {fileID: 0}
   isFacingRight: 1
   collectiblesManager: {fileID: 0}
 --- !u!1 &2359532350156038978
@@ -9216,13 +9218,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ee56de2774e984e89369b3c4111056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 0}
+  echoAnim: {fileID: 0}
   keyToggle: 1
   echoRange: 5
   echoLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  echoVisualPrefab: {fileID: 0}
+  echoVisual: {fileID: 0}
 --- !u!114 &7766118176695108426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9236,8 +9238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldVisual: {fileID: 1373362702}
-  duration: 3
   shieldAnim: {fileID: 0}
+  duration: 3
   keyToggle: 1
 --- !u!114 &7766118176695108427
 MonoBehaviour:
@@ -9311,6 +9313,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 1
+  playerAnimator: {fileID: 0}
 --- !u!4 &8544720627734092281
 Transform:
   m_ObjectHideFlags: 0
