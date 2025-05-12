@@ -448,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: dialogueLines.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[0]'
@@ -460,23 +460,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[2]'
-      value: EXPLAIN ABILITY
+      value: This ability will allow you to shed your skin and...
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[3]'
-      value: EXPLAIN KILLABLE OBJECTS
+      value: create a temporary blob for you to jump off of.
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[4]'
-      value: LORE?
+      value: This was given to me from creatures..
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[5]'
-      value: With this you've learnt all my abilities..
+      value: that gave up their own bodies over and over
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[6]'
-      value: Until you gain them youself
+      value: With this you've now learnt all my abilities..
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[7]'
@@ -4413,7 +4413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 417656464154364601, guid: af2091de4a31d404ebaa1f7d8b56638e, type: 3}
       propertyPath: m_Name
-      value: Room004
+      value: Room005
       objectReference: {fileID: 0}
     - target: {fileID: 1246938860012066414, guid: af2091de4a31d404ebaa1f7d8b56638e, type: 3}
       propertyPath: m_Enabled
@@ -8566,7 +8566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: dialogueLines.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[0]'
@@ -8574,31 +8574,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[1]'
-      value: EXPLAIN ABILITY
+      value: Activate your shield to push through any obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[2]'
-      value: EXPLAIN KILLABLE OBJECTS
+      value: But watchout for salt blocks and water zones..
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[3]'
-      value: I got this while travelling in the Junles,
+      value: because  if your caught in them without your shield
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[4]'
-      value: They remind me of your father.
+      value: you might end up losing your form, but
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[5]'
-      value: 
+      value: you should reform back where you felt most safe
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[6]'
-      value: Until you gain them youself
+      value: I got this while travelling in the Jungle,
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: 'dialogueLines.Array.data[7]'
-      value: Until you gain them youself
+      value: Kind of reminds me of your father a little.
       objectReference: {fileID: 0}
     - target: {fileID: 3506171907216138324, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: m_Sprite
@@ -17151,7 +17151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2351652878559211927, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: m_Name
-      value: ShedMom (1)
+      value: FinalMom
       objectReference: {fileID: 0}
     - target: {fileID: 2627380498761191156, guid: 3ef14836dae8652429794ab2d3789140, type: 3}
       propertyPath: panelObject
@@ -17356,7 +17356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 417656464154364601, guid: af2091de4a31d404ebaa1f7d8b56638e, type: 3}
       propertyPath: m_Name
-      value: Room003
+      value: Room004
       objectReference: {fileID: 0}
     - target: {fileID: 1246938860012066414, guid: af2091de4a31d404ebaa1f7d8b56638e, type: 3}
       propertyPath: m_Enabled
