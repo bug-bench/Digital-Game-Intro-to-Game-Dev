@@ -5,8 +5,6 @@ using TMPro;
 
 public class AbilitySwitcher : MonoBehaviour
 {
-    public ChangeColor colorChanger;
-
     [System.Serializable]
     public class AbilitySlot
 
@@ -17,9 +15,6 @@ public class AbilitySwitcher : MonoBehaviour
 
         public Image uiIcon; // Optional icon image in the menu
         public TextMeshProUGUI uiLabel; // Optional TextMeshPro label for this ability
-
-        [Header("Visuals")]
-        public Color abilityColor = Color.white;
     }
 
     [Header("Ability Slots (Scene Specific)")]

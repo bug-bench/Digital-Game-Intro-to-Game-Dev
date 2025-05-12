@@ -3611,18 +3611,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 2821314302392681926, guid: e0f908f31335be642b01763f716e7dab, type: 3}
   m_PrefabInstance: {fileID: 609727921}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &162534632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162534628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df96da3ad7a5149a1a82297de597d88a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &169298352
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,7 +4298,7 @@ PrefabInstance:
     - target: {fileID: 7743632107948404208, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: colorChanger
       value: 
-      objectReference: {fileID: 162534632}
+      objectReference: {fileID: 0}
     - target: {fileID: 7743632107948404208, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       propertyPath: abilityMenuUI
       value: 
@@ -4404,9 +4392,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8911147397573696847, guid: e0f908f31335be642b01763f716e7dab, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 162534632}
     - targetCorrespondingSourceObject: {fileID: 3208099204566872288, guid: e0f908f31335be642b01763f716e7dab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1415700041}
@@ -5950,7 +5935,7 @@ GameObject:
   - component: {fileID: 1386364973}
   - component: {fileID: 1386364972}
   - component: {fileID: 1386364971}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9040,32 +9025,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ead0a4bd68811243bd4a7f9999404aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorChanger: {fileID: 0}
   availableAbilities:
   - abilityName: Pogo
     abilityScript: {fileID: 7766118176695108427}
     selectionKey: 119
     uiIcon: {fileID: 0}
     uiLabel: {fileID: 671591940}
-    abilityColor: {r: 1, g: 1, b: 1, a: 1}
   - abilityName: Shield
     abilityScript: {fileID: 7766118176695108426}
     selectionKey: 115
     uiIcon: {fileID: 0}
     uiLabel: {fileID: 26807234}
-    abilityColor: {r: 1, g: 1, b: 1, a: 1}
   - abilityName: Echo
     abilityScript: {fileID: 7766118176695108425}
     selectionKey: 97
     uiIcon: {fileID: 0}
     uiLabel: {fileID: 419094357}
-    abilityColor: {r: 1, g: 1, b: 1, a: 1}
   - abilityName: Shed
     abilityScript: {fileID: 7766118176695108424}
     selectionKey: 100
     uiIcon: {fileID: 0}
     uiLabel: {fileID: 148390419}
-    abilityColor: {r: 1, g: 1, b: 1, a: 1}
   abilityMenuUI: {fileID: 224692835}
   menuHoldKey: 108
   scriptsToDisableOnMenu:
