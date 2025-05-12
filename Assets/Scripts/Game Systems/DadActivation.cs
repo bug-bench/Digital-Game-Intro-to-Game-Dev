@@ -11,6 +11,16 @@ public class DadActivation : MonoBehaviour
     private bool isMovingUp = false;
     private float startY;
 
+    private Vector3 originalPosition;
+
+    void Start()
+    {
+        if (targetToActivate != null)
+        {
+            originalPosition = targetToActivate.transform.position;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!triggered && other.CompareTag("Player"))
@@ -32,7 +42,7 @@ public class DadActivation : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         if (isMovingUp && targetToActivate != null)
         {
@@ -44,8 +54,19 @@ public class DadActivation : MonoBehaviour
             }
             else
             {
-                isMovingUp = false; // Stop moving when target height is reached
+                isMovingUp = false;
             }
+        }
+    }
+
+    public void ResetDad()
+    {
+        triggered = false;
+        isMovingUp = false;
+
+        if (targetToActivate != null)
+        {
+            targetToActivate.transform.position = originalPosition;
         }
     }
 }
