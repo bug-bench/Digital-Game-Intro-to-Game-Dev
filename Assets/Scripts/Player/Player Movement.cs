@@ -33,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Control Scheme")]
     public bool keyToggle = false;
 
+    [Header("Audio")]
+    public AudioClip jumpSFX;
+    public AudioClip dashSFX;
+    private AudioSource audioSource;
+
     private Rigidbody2D rb;
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
@@ -51,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -174,6 +180,9 @@ public class PlayerMovement : MonoBehaviour
 
         playerAnimator.SetTrigger("JumpTrigger");
 
+        if (jumpSFX != null)
+            audioSource.PlayOneShot(jumpSFX);
+
         if (Mathf.Abs(rb.linearVelocity.x) > moveSpeed * 0.8f)
             rb.linearVelocity = new Vector2(rb.linearVelocity.x * speedBoostFactor, jumpForce);
         else
@@ -187,6 +196,9 @@ public class PlayerMovement : MonoBehaviour
 
         dashEndTime = Time.time + dashDuration;
         rb.linearVelocity = new Vector2((inputX == 0 ? transform.localScale.x : inputX) * dashSpeed, 0);
+
+        if (dashSFX != null)
+            audioSource.PlayOneShot(dashSFX);
     }
 
     void StopDash()
@@ -238,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("Shield active â€“ passed through spike safely.");
+                Debug.Log("Shield active ¨C passed through spike safely.");
             }
         }
 
