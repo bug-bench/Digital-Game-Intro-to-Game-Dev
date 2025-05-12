@@ -7,7 +7,6 @@ public class AbilitySwitcher : MonoBehaviour
 {
     [System.Serializable]
     public class AbilitySlot
-
     {
         public string abilityName; // Display name for clarity
         public MonoBehaviour abilityScript; // Reference to the actual ability script (e.g. PogoAbility)

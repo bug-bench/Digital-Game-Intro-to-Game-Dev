@@ -9,8 +9,7 @@ TagManager:
   - Spike
   - Reflective
   - LaserDoor
-  - CommonCollectible
-  - LimitedCollectible
+  - Collectible
   layers:
   - Default
   - TransparentFX
