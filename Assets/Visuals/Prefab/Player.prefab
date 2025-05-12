@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 1046949330260595603}
   - component: {fileID: 4918187444956177508}
   - component: {fileID: 6468799245662933636}
-  - component: {fileID: 5387801866968631672}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -164,6 +163,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   keyToggle: 1
+  jumpSFX: {fileID: 0}
+  dashSFX: {fileID: 0}
   isFacingRight: 1
   collectiblesManager: {fileID: 0}
 --- !u!114 &5617627504659259812
@@ -181,6 +182,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 1
+  playerAnimator: {fileID: 2821314302392681926}
 --- !u!114 &7743632107948404208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,8 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldVisual: {fileID: 3208099204566872288}
+  shieldAnim: {fileID: 427528841897127795}
   duration: 3
-  shieldAnim: {fileID: 5387801866968631672}
   keyToggle: 1
 --- !u!114 &4918187444956177508
 MonoBehaviour:
@@ -266,13 +268,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ee56de2774e984e89369b3c4111056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 5387801866968631672}
+  echoAnim: {fileID: 3239736343016960046, guid: 06d26f6447da20f4f9135437c704aff7, type: 3}
   keyToggle: 1
   echoRange: 5
   echoLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  echoVisualPrefab: {fileID: 976818940345092705, guid: 06d26f6447da20f4f9135437c704aff7, type: 3}
+  echoVisual: {fileID: 976818940345092705, guid: 06d26f6447da20f4f9135437c704aff7, type: 3}
 --- !u!114 &6468799245662933636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,28 +296,6 @@ MonoBehaviour:
     m_Bits: 4096
   wallCheck: {fileID: 6947955491343256585}
   wallCheckRadius: 0.1
---- !u!95 &5387801866968631672
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1958484851504716387}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e5002c6d0b5c449c2a35f651b502b37e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3208099204566872288
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +307,7 @@ GameObject:
   - component: {fileID: 3801881859723702525}
   - component: {fileID: 8790664426529858967}
   - component: {fileID: 3558742143640452374}
+  - component: {fileID: 427528841897127795}
   m_Layer: 10
   m_Name: ShieldVisual
   m_TagString: Untagged
@@ -393,12 +374,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6310296523492593272, guid: a867c4e7c66014b52bb22d11b13354d0, type: 3}
-  m_Color: {r: 1, g: 0.9043125, b: 0, a: 0.34117648}
+  m_Sprite: {fileID: -4048368580389659613, guid: a867c4e7c66014b52bb22d11b13354d0, type: 3}
+  m_Color: {r: 1, g: 0.9043125, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.25, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -440,6 +421,28 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!95 &427528841897127795
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208099204566872288}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f94dd3f13ac44a3eb2a1e7306164c6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7439209007547619004
 GameObject:
   m_ObjectHideFlags: 0
